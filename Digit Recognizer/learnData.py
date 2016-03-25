@@ -8,24 +8,27 @@ from sklearn.metrics import accuracy_score
 def digitRecognizer(data, target, folds):
     for i in range(1, folds+1):
         x_train, x_test, y_train, y_test = train_test_split(data, target,random_state=i)
-        knn = KNeighborsClassifier(n_neighbors=10)
+        knn = KNeighborsClassifier(n_neighbors=5)
         knn.fit(x_train, y_train)
         y_pred = knn.predict(x_test)
         print accuracy_score(y_test, y_pred)
 
-def KNN(X,y,testtrain):
+def myKNN(X,y,testtrain):
     knn = KNeighborsClassifier(n_neighbors=5)
     knn.fit(X,y)
     res = []
     for item in testdata:
-        tmp = []
-        tmp.append(knn.predict(item))
-        res.append(tmp)
+        k = knn.predict(item)
+        res.append(k)
     return res
 
 if __name__ == '__main__':
+    print 'here1'
     traindata = loadfile('train.csv')
     testdata = loadfile('test.csv')
+    print 'here2'
     X,y = constructTrainData(traindata)
-    res = KNN(X,y,testdata)
+    print 'here3'
+#    digitRecognizer(X,y,5)
+    res = myKNN(X,y,testdata)
     writecsv(res, 'res.csv')
