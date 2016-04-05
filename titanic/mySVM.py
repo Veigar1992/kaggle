@@ -86,22 +86,27 @@ from sklearn import metrics
 from sklearn.svm import SVC
 from sklearn.cross_validation import cross_val_score
 from sklearn import grid_search
+param_range = [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]
 parameters = {
-            'kernel':('linear','rbf','poly','sigmoid'),
-            'C':[1,10],
-            'gamma':[0.1,1]
+            'C':param_range,
+            'gamma':param_range
             }
 clf = SVC()
-model = grid_search.GridSearchCV(clf,parameters,n_jobs=2)
-model.fit(X,y)
-score = cross_val_score(model,X,y,cv=5,scoring='accuracy')
-print score
+model = grid_search.GridSearchCV(estimator=clf,param_grid=parameters,cv=5,scoring='accuracy')
+model = model.fit(X,y)
+print model.best_score_
+print model.best_params_
+
+#score = cross_val_score(model,X,y,cv=2,scoring='accuracy')
+#print score
 #print 'Training...'
 #forest = RandomForestClassifier(n_estimators=100)
 #forest = forest.fit( train_data[0::,1::], train_data[0::,0] )
 
 print 'Predicting...'
-output = model.predict(test_data).astype(int)
+finalclf = SVC(C=model.best_params_['C'],gamma=model.best_params_['gamma'])
+finalclf.fit(X,y)
+output = finalclf.predict(test_data).astype(int)
 
 
 predictions_file = open("output/mySVM_2.csv", "wb")
