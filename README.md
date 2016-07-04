@@ -15,3 +15,7 @@
 
 > Objects passed to functions are Series objects having index either the DataFrame’s index (axis=0) or the columns (axis=1). Return type depends on whether passed function aggregates, or the reduce argument if the DataFrame is empty.
 
+[pandas.get_dummies](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html?highlight=get_dummies#pandas.get_dummies):Convert categorical variable into dummy/indicator variables.
+
+[pandas.concat](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html?highlight=concat#pandas.concat):Concatenate pandas objects along a particular axis with optional set logic along the other axes. Can also add a layer of hierarchical indexing on the concatenation axis, which may be useful if the labels are the same (or overlapping) on the passed axis number.
+
