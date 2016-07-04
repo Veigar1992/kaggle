@@ -19,3 +19,8 @@
 
 [pandas.concat](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html?highlight=concat#pandas.concat):Concatenate pandas objects along a particular axis with optional set logic along the other axes. Can also add a layer of hierarchical indexing on the concatenation axis, which may be useful if the labels are the same (or overlapping) on the passed axis number.
 
+[pandas.DataFrame.info](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.info.html?highlight=info#pandas.DataFrame.info):Concise summary of a DataFrame.
+
+[pandas.DataFrame.describe](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html?highlight=describe#pandas.DataFrame.describe):Generate various summary statistics, excluding NaN values.
+
+[]():
